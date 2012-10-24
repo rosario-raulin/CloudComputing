@@ -8,22 +8,25 @@ import javax.servlet.http.HttpServletResponse;
 
 public class Logout extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
 
-    public Logout() {
-        super();
-    }
-    
-    protected void logout(HttpServletRequest request, HttpServletResponse response) throws IOException {
-    	request.getSession().invalidate();
-		response.sendRedirect(request.getContextPath() + "/login.jsp?loggedOut=1");
-    }
-    
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
-    	logout(request, response);
-    }
+	public Logout() {
+		super();
+	}
 
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void logout(HttpServletRequest request,
+			HttpServletResponse response) throws IOException {
+		request.getSession().invalidate();
+		response.sendRedirect(request.getContextPath()
+				+ "/login.jsp?loggedOut=1");
+	}
+
+	protected void doGet(HttpServletRequest request,
+			HttpServletResponse response) throws IOException {
+		logout(request, response);
+	}
+
+	protected void doPost(HttpServletRequest request,
+			HttpServletResponse response) throws ServletException, IOException {
 		logout(request, response);
 	}
 

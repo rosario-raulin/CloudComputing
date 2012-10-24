@@ -22,11 +22,14 @@ public class Register extends HttpServlet {
 		try {
 			final User user = new User(email, username, password);
 			DynamoDBHelper.add(user);
-			response.sendRedirect(request.getContextPath() + "/register.jsp?success=1");
+			response.sendRedirect(request.getContextPath()
+					+ "/register.jsp?success=1");
 		} catch (EmptyInputException e) {
-			response.sendRedirect(request.getContextPath() + "/register.jsp?empty=1");
+			response.sendRedirect(request.getContextPath()
+					+ "/register.jsp?empty=1");
 		} catch (InUseException e) {
-			response.sendRedirect(request.getContextPath() + "/register.jsp?inuse=1");
+			response.sendRedirect(request.getContextPath()
+					+ "/register.jsp?inuse=1");
 		}
 	}
 }

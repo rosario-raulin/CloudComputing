@@ -10,12 +10,13 @@ import javax.servlet.http.HttpSession;
 public class Login extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-    public Login() {
-        super();
-        // TODO Auto-generated constructor stub
-    }
+	public Login() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
 
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doPost(HttpServletRequest request,
+			HttpServletResponse response) throws ServletException, IOException {
 		final String email = (String) request.getParameter("email");
 		final String password = (String) request.getParameter("password");
 		try {
@@ -23,11 +24,14 @@ public class Login extends HttpServlet {
 			DynamoDBHelper.lookup(user);
 			final HttpSession s = request.getSession();
 			s.setAttribute("loggedIn", true);
-			response.sendRedirect(request.getContextPath() + "/login.jsp?success=1");
+			response.sendRedirect(request.getContextPath()
+					+ "/login.jsp?success=1");
 		} catch (EmptyInputException e) {
-			response.sendRedirect(request.getContextPath() + "/login.jsp?empty=1");
+			response.sendRedirect(request.getContextPath()
+					+ "/login.jsp?empty=1");
 		} catch (InvalidLoginException e) {
-			response.sendRedirect(request.getContextPath() + "/login.jsp?invalid=1");
+			response.sendRedirect(request.getContextPath()
+					+ "/login.jsp?invalid=1");
 		}
 	}
 
