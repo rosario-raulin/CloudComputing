@@ -12,7 +12,6 @@ public class Login extends HttpServlet {
 
 	public Login() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 
 	protected void doPost(HttpServletRequest request,
@@ -22,8 +21,11 @@ public class Login extends HttpServlet {
 		try {
 			final User user = new User(email, password);
 			DynamoDBHelper.lookup(user);
+			
 			final HttpSession s = request.getSession();
 			s.setAttribute("loggedIn", true);
+			s.setAttribute("name", user.getName());
+			
 			response.sendRedirect(request.getContextPath()
 					+ "/login.jsp?success=1");
 		} catch (EmptyInputException e) {

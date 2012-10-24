@@ -72,6 +72,7 @@ public class DynamoDBHelper {
 			if (Arrays.equals(password, user.getPassword()) == false) {
 				throw new InvalidLoginException();
 			}
+			user.setName(m.get("name").getS());
 		} else {
 			throw new InvalidLoginException();
 		}
