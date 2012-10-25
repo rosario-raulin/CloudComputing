@@ -13,23 +13,25 @@ public class User {
 	protected final List<Integer> vids;
 	protected AccountStatus status;
 
-	// TODO: throw EmptyInputException if name.isEmpty() == true
 	public User(final String email, final String name, final String password)
 			throws EmptyInputException {
-		if (email == null || password == null || email.isEmpty()
-				|| password.isEmpty()) {
+		this(email, password);
+		if (name.isEmpty()) {
 			throw new EmptyInputException();
+		} else {
+			this.name = name;
 		}
-		this.name = name;
-		this.email = email;
-		this.password = hash(password);
-		this.vids = new ArrayList<Integer>();
-		this.status = AccountStatus.OK;
 	}
 
 	public User(final String email, final String password)
 			throws EmptyInputException {
-		this(email, null, password);
+		if (email.isEmpty() || password.isEmpty()) {
+			throw new EmptyInputException();
+		}
+		this.email = email;
+		this.password = hash(password);
+		this.vids = new ArrayList<Integer>();
+		this.status = AccountStatus.OK;
 	}
 
 	protected byte[] hash(final String password) {
