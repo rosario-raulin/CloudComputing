@@ -9,7 +9,18 @@
     <welcome-file>default.htm</welcome-file>
     <welcome-file>default.jsp</welcome-file>
   </welcome-file-list>
-  <servlet>
+  <security-constraint>
+    <web-resource-collection>
+        <web-resource-name>login, logout and more</web-resource-name>
+        <url-pattern>/secure/*</url-pattern>
+        <http-method>GET</http-method>
+        <http-method>POST</http-method>
+    </web-resource-collection>
+    <user-data-constraint>
+        <transport-guarantee>CONFIDENTIAL</transport-guarantee>
+    </user-data-constraint>
+</security-constraint>
+   <servlet>
     <description></description>
     <display-name>Register</display-name>
     <servlet-name>Register</servlet-name>

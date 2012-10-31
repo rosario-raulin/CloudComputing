@@ -17,7 +17,7 @@ public class DynamoDBHelper {
 
 	private final static String ACCOUNT_ID = "";
 	private final static String ACCOUNT_KEY = "";
-	private final static String DB_SERVER = "http://dynamodb.eu-west-1.amazonaws.com";
+	private final static String DB_SERVER = "https://dynamodb.eu-west-1.amazonaws.com";
 	private final static String DB_TABLE = "";
 	private final static AmazonDynamoDBClient DB_CLIENT;
 

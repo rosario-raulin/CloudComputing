@@ -5,7 +5,6 @@
 	if (request.getMethod().equals("HEAD"))
 		return;
 %>
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -20,5 +19,9 @@
 	<h1>Welcome...</h1>
 
 	<p>... to the Cloud! There is no real content here yet.</p>
+	
+	<% if (request.getParameter("success") != null) { %>
+		<p>You are now logged in!</p>
+	<% } %>
 </body>
 </html>

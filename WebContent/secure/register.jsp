@@ -1,18 +1,19 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
 	pageEncoding="utf-8"%>
+<%@ page import="de.raulin.rosario.helloCloud.sessions.*" %>
 <!DOCTYPE HTML>
 <html>
 <head>
 <meta charset="utf-8">
 <title>HelloCloud - Register</title>
-<link rel="stylesheet" href="styles/styles.css" type="text/css"
+<link rel="stylesheet" href="../styles/styles.css" type="text/css"
 	media="screen">
 </head>
 <body>
-	<%@ include file="navigation.jsp"%>
-
+	<%@ include file="../navigation.jsp"%>
+ 
 	<%
-		if (request.getSession().getAttribute("loggedIn") != null) {
+		if (SessionHandler.getSecureSession(request, response).getValue("loggedIn") != null) {
 	%>
 	<p>You are logged in. A new registration makes now sense at all.</p>
 	<%
@@ -38,7 +39,7 @@
 		}
 	%>
 	<div id="registerform">
-		<form method="post" action="register">
+		<form method="post" action="../register">
 			<p>
 				E-Mail: <input type="text" name="email">
 			</p>
